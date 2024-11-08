@@ -51,6 +51,25 @@ export const Theme: ThemeConfig = {
 
 export default Theme
 ```
+Add this plugin to `noExternal` and `exclude` properties when building:
+```typescript
+export default defineConfig({
+  vite: {
+    optimizeDeps: {
+      exclude: [
+        '@lemonneko/vitepress-plugin-breadcrumbs/client'
+      ]
+    },
+    ssr: {
+      noExternal: [
+        '@lemonneko/vitepress-plugin-breadcrumbs'
+      ]
+    }
+  },
+  // other config...
+})
+```
+
 ## Use custom breadcrumb component
 If you don't like the style or other something of default breadcrumb component, you can create your own component, this plugin will inject breadcrumb data into frontmatter of the page, so you can use breadcrumb data like this:
 ```vue
